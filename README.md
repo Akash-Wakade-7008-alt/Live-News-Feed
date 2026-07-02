@@ -44,15 +44,15 @@
 
 # 🚀 Tech Stack
 
-| Technology | Usage |
-|------------|-------|
-| HTML5 | Structure |
-| CSS3 | Styling |
-| Bootstrap 5 | Responsive UI |
-| JavaScript (ES6) | Logic |
-| Fetch API | API Requests |
-| Async/Await | Asynchronous Programming |
-| NewsAPI | News Data |
+| Technology       | Usage                    |
+| ---------------- | ------------------------ |
+| HTML5            | Structure                |
+| CSS3             | Styling                  |
+| Bootstrap 5      | Responsive UI            |
+| JavaScript (ES6) | Logic                    |
+| Fetch API        | API Requests             |
+| Async/Await      | Asynchronous Programming |
+| NewsAPI          | News Data                |
 
 ---
 
@@ -79,7 +79,7 @@ NewsVista/
 Clone the repository
 
 ```bash
-git clone https://github.com/your-username/NewsVista.git
+git clone https://github.com/Akash-Wakade-7008-alt/Live-News-Feed
 ```
 
 Move into the project
@@ -275,21 +275,6 @@ If you liked this project,
 🍴 Fork it
 
 🛠️ Contribute to it
-
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
-
----
-
-# 👨‍💻 Author
-
-**Akash Wakade**
-
-- GitHub: https://github.com/your-github-username
-- LinkedIn: https://linkedin.com/in/your-linkedin
 
 ---
 
