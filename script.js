@@ -134,10 +134,12 @@ searchBtn.addEventListener("click", () => {
     searchNews();
 });
 
-window.addEventListener("DOMContentLoaded",()=>{
-    const storedArticles=JSON.parse(localStorage.getItem("newsArticles"));
+window.addEventListener("DOMContentLoaded", () => {
+    const storedArticles = JSON.parse(localStorage.getItem("newsArticles"));
 
-    if (storedArticles){
+    if (storedArticles && storedArticles.length > 0) {
         displayNews(storedArticles);
+    } else {
+        newsContainer.innerHTML = "";
     }
 });
