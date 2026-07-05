@@ -39,6 +39,7 @@ async function searchNews() {
 
     const data = await response.json();
 
+    console.log(data);
     displayNews(data.articles);
 }
 
