@@ -25,6 +25,10 @@
 
 ![City Search](./images/search-city-catogery.png)
 
+### 📌 Bookmark
+
+![Bookmark](./images/bookmark.png)
+
 ---
 
 # ✨ Features
@@ -60,18 +64,25 @@
 
 # 📂 Project Structure
 
+
 ```
 NewsVista/
 │
-├── index.html
-├── style.css
-├── script.js
-├── README.md
+├── html/
+│   ├── index.html
+│   └── bookmarks.html
 │
-└── Images/
-      ├── home.png
-      ├── search-keyword.png
-      └── search-city-category.png
+├── images/
+│   ├── home.png
+│   ├── search-city-category.png
+│   └── search-keyword.png
+│
+├── js/
+│   ├── script.js
+│   └── bookmark.js
+│
+├── style.css
+└── README.md
 ```
 
 ---
