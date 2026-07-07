@@ -5,9 +5,6 @@ const newsContainer = document.getElementById("news-container");
 
 async function fetchNews(city, category) {
 
-    console.log(city);
-    console.log(category);
-
     const query = `${city} ${category}`;
 
     const url =
@@ -16,7 +13,6 @@ async function fetchNews(city, category) {
     const response = await fetch(url);
 
     const data = await response.json();
-    console.log(data.articles);
     localStorage.setItem("newsArticles", JSON.stringify(data.articles));
     let storedData = JSON.parse(localStorage.getItem("newsArticles"));
     displayNews(storedData);
@@ -61,43 +57,54 @@ function displayNews(articles) {
         return;
     }
 
-    articles.forEach(article => {
+    articles.forEach((article,index) => {
 
-        newsContainer.innerHTML += `
-            <div class="col-md-4 mb-4">
+       newsContainer.innerHTML += `
+    <div class="col-md-4 mb-4">
 
-                <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm">
 
-                    <img
-                        src="${article.urlToImage || 'https://via.placeholder.com/300'}"
-                        class="card-img-top"
-                        alt="News Image"
+            <img
+                src="${article.urlToImage || 'https://via.placeholder.com/300'}"
+                class="card-img-top"
+                alt="News Image"
+            >
+
+            <div class="card-body d-flex flex-column">
+
+                <h5 class="card-title">
+                    ${article.title || "No Title"}
+                </h5>
+
+                <p class="card-text flex-grow-1">
+                    ${article.description || "No description available"}
+                </p>
+
+                <div class="d-flex justify-content-between">
+
+                    <a
+                        href="${article.url}"
+                        target="_blank"
+                        class="btn btn-primary"
                     >
+                        Read More
+                    </a>
 
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-                            ${article.title || "No Title"}
-                        </h5>
-
-                        <p class="card-text">
-                            ${article.description || "No description available"}
-                        </p>
-
-                        <a
-                            href="${article.url}"
-                            target="_blank"
-                            class="btn btn-primary"
-                        >
-                            Read More
-                        </a>
-
-                    </div>
+                    <button
+                        class="btn btn-outline-warning bookmark-btn"
+                        data-index="${index}"
+                    >
+                        ⭐ Bookmark
+                    </button>
 
                 </div>
 
             </div>
-        `;
+
+        </div>
+
+    </div>
+`;
     });
 }
 
@@ -142,4 +149,33 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
         newsContainer.innerHTML = "";
     }
+});
+
+let bookedMarkedArticles = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+document.addEventListener("click", (e) => {
+
+    if (e.target.classList.contains("bookmark-btn")) {
+
+        const index = e.target.dataset.index;
+        const articles = JSON.parse(localStorage.getItem("newsArticles")) || [];
+
+        const article = articles[index];
+
+        const alreadyBookmarked = bookedMarkedArticles.some(
+            item => item.url === article.url
+        );
+
+        if (alreadyBookmarked) {
+            alert("This article is already bookmarked.");
+            return;
+        }
+
+        bookedMarkedArticles.push(article);
+
+        localStorage.setItem("bookmarks", JSON.stringify(bookedMarkedArticles));
+
+        alert("Article bookmarked successfully!");
+    }
+
 });
