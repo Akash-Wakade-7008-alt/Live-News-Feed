@@ -152,7 +152,6 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 let bookedMarkedArticles = JSON.parse(localStorage.getItem("bookmarks")) || [];
-
 document.addEventListener("click", (e) => {
 
     if (e.target.classList.contains("bookmark-btn")) {
@@ -174,6 +173,9 @@ document.addEventListener("click", (e) => {
         bookedMarkedArticles.push(article);
 
         localStorage.setItem("bookmarks", JSON.stringify(bookedMarkedArticles));
+
+        e.target.classList.remove("btn-outline-warning");
+        e.target.classList.add("btn-warning");
 
         alert("Article bookmarked successfully!");
     }
